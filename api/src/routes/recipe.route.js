@@ -12,7 +12,7 @@ const getAllData = async () => {
                 attributes: ['name']
             }
         })
-        const resultado = dataDB.concat(data)
+        const resultado = data.concat(dataDB)
         return resultado
     } catch (err) {
         console.log(err)

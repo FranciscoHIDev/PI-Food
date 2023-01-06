@@ -10,7 +10,7 @@ const getApiDiets = async (req, res) => {
         // const { data } = await axios.get(API_URL)
         const { data } = await axios({
             method: 'get',
-            url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=206aac4c607943c49eb99bf20a699dad&addRecipeInformation=true&number=100`,
+            url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=4ac67de829494b7195a6cd464ea7be57&addRecipeInformation=true&number=100`,
             headers: { "Accept-Encoding": "null" }
         })
         const diets = data.results.map((e) => e.diets);
