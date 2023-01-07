@@ -7,7 +7,7 @@ import {
 
 const initialState = {
     recipes: [],
-    recipeId: [],
+    recipeId: {},
     recipeName: [],
     diets: []
 }

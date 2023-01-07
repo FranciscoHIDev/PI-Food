@@ -10,7 +10,7 @@ function RouteApp() {
             <Route path="/details/:id" component={Details} />
             <Route path="/about" component={About} />
             <Route path="/create" component={Create} />
-            <Route exact path={"*"} component={NotFound} />
+            {/* <Route exact path={"*"} component={NotFound} /> */}
         </>
     )
 }

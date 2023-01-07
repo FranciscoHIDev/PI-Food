@@ -26,6 +26,7 @@ function Home() {
               name={e.name}
               image={e.image}
               healthScore={e.healthScore}
+              dishTypes={e.dishTypes}
               diets={e.diets}
             />
           );

@@ -8,7 +8,7 @@ const getApiInfo = async () => {
         // const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=4ac67de829494b7195a6cd464ea7be57&addRecipeInformation=true&number=100`)
         let { data: { results: dataAPI } } = await axios({
             method: 'get',
-            url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=ddc9c15806014fa6a18f88c2dd5c545a&addRecipeInformation=true&number=100`,
+            url: `https://api.spoonacular.com/recipes/complexSearch?apiKey=6032fcf8e8a04693a878e6b145158f6b&addRecipeInformation=true&number=100`,
             headers: { "Accept-Encoding": "null" }
         })
         // let { data: { results: dataAPI } } = await axios(`${API_URL}`);
