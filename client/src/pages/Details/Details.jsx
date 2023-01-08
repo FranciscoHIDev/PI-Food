@@ -21,17 +21,17 @@ function Details() {
           <p>id: {recipe[0]?.id} </p>
           <p>name:{recipe[0]?.name} </p>
           <p>dietas: {recipe[0]?.diets.map((diet) => diet.name).join(", ")}</p>
-          <p>tipo de plato: {recipe[0]?.dishTypes.map((d) => d).join(", ")}</p>
+          {/* <p>tipo de plato: {recipe[0]?.dishTypes.map((d) => d).join(", ")}</p> */}
           <p>health score: {recipe[0]?.healthScore}</p>
           <p>resumen: {recipe[0]?.summary}</p>
           <p>pasos:</p>{" "}
-          {recipe[0]?.steps.map((s) => {
+          {/* {recipe[0]?.steps.map((s) => {
             return (
-              <ul>
+              <ul key={crypto.randomUUID()}>
                 <li>{s.step}</li>
               </ul>
             );
-          })}
+          })} */}
         </div>
       ) : (
         <img

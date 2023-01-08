@@ -2,7 +2,8 @@ import {
     GET_ALL_RECIPES,
     GET_RECIPE_ID,
     GET_RECIPE_NAME,
-    GET_ALL_DIETS
+    GET_ALL_DIETS,
+    POST_DOG
 } from '../actions/actions.js'
 
 const initialState = {
@@ -33,6 +34,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 diets: action.payload
+            }
+        case POST_DOG:
+            return {
+                ...state,
+                recipes: [...state.recipes, action.payload]
             }
         default:
             return state;
