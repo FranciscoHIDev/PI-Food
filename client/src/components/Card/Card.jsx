@@ -6,9 +6,9 @@ function Card({ id, image, name, healthScore, diets, dishTypes }) {
   return (
     <CardStyled>
       <img src={image} alt={name} />
-      <p>name: {name}</p>
-      <p>healthScore: {healthScore}</p>
-      <p>Dietas: {diets.map((diet) => diet).join(", ")}</p>
+      <h4>{name}</h4>
+      <h5>healthScore: {healthScore}</h5>
+      <h5>Dietas: {diets.map((diet) => diet).join(", ")}</h5>
       {/* <p>Tipo de plato: {dishTypes.map((d) => d).join(", ")}</p> */}
       <Link to={`/details/${id}`}>
         <button>Ir a detalles</button>

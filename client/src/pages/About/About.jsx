@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
+import NavBar from "../../components/NavBar/NavBar";
 
 function About() {
   return (
-    <div>
-<h1>Hola</h1>
-
-    </div>
-  )
+    <>
+      <NavBar />
+      <h1>Hola</h1>
+    </>
+  );
 }
 
-export default About
+export default About;

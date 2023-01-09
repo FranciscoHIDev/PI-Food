@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { getAllDiets, postRecipe } from "../../redux/actions/actions";
+import NavBar from "../../components/NavBar/NavBar";
+import image from "../../img/cooking.gif";
 
 function Create() {
   const initialState = {
@@ -9,7 +11,7 @@ function Create() {
     image: "",
     summary: "",
     healthScore: "",
-    steps: [],
+    steps: "",
     diets: [],
   };
 
@@ -62,6 +64,7 @@ function Create() {
 
   return (
     <>
+      <NavBar />
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
@@ -96,6 +99,7 @@ function Create() {
           placeholder="diets"
           onChange={(e) => handleSelect(e)}
         >
+          <option value="--Seleccionar--">--Tipo de dieta--</option>
           {dietas?.map((diet, id) => (
             <option key={id} value={null}>
               {diet.name}
@@ -117,12 +121,8 @@ function Create() {
       </form>
 
       <>
-        <img
-          src={
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgjDd9EDL6VoNdUZyy9TcCDBr9l3X56PvySw&usqp=CAU"
-          }
-          alt={"imagendog"}
-        />
+        <br />
+        <img src={image} alt={"imagendog"} />
         {<p>Nombre: {input.name}</p>}
         {<p>Resumen: {input.summary}</p>}
         {<p>Nivel de comida: {input.healthScore}</p>}
