@@ -5,49 +5,47 @@ const { getApiInfo } = require('../controllers/recipe.controller')
 
 const getAllData = async () => {
     try {
-        const data = await getApiInfo()
-        const dataDB = await Recipe.findAll({
+         const dataDB = await Recipe.findAll({
             include: {
                 model: Diet,
                 attributes: ['name']
             }
         })
-        const resultado = data.concat(dataDB)
-        return resultado
+        const db = await dataDB?.map((e) => {
+            return {
+                id: e.id,
+                name: e.name,
+                summary: e.summary,
+                healthScore: e.healthScore,
+                image: e.image,
+                steps: e.steps,
+                diets: e.diets?.map((e) => e.name),
+            }
+        })
+
+        return db
     } catch (err) {
         console.log(err)
     }
 }
 
-// const getDB = async () => {
-//     return await Recipe.findAll({
-//         include: {
-//             model: Diet,
-//             attributes: ['name'],
-//             through: {
-//                 attributes: []
-//             }
-//         }
-//     })
-// }
-
-// const getAllData = async () => {
-//     const dataApi = await getApiInfo()
-//     const dataDB = await getDB()
-//     const allInfo = [...dataApi, ...dataDB]
-//     return allInfo
-// }
+const apiDB = async () => {
+    const dataApi = await getApiInfo()
+    const dataDB = await getAllData()
+    const allInfo = [...dataApi, ...dataDB]
+    return allInfo
+}
 
 const getAllRecipes = async (req, res) => {
     const { name } = req.query
-    const recipes = await getAllData()
+    const recipes = await apiDB()
     try {
         if (name) {
             const recipeName = recipes.filter(r => r.name.toLowerCase().includes(name.toLowerCase()))
             recipeName.length ? recipes.status(200).json({ recipeName }) :
                 res.status(404).send("Receta no encontrado")
         } else {
-            const result = await getAllData()
+            const result = await apiDB()
             res.status(200).json({ result })
         }
     } catch (error) {
@@ -58,7 +56,7 @@ const getAllRecipes = async (req, res) => {
 const getRecipesById = async (req, res) => {
     const { id } = req.params
     try {
-        const recipes = await getAllData()
+        const recipes = await apiDB()
         const recipe = recipes.filter(recipe => recipe.id == id)
         if (recipe.length > 0) {
             res.status(200).json({ recipe })

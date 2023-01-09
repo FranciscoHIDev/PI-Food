@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getRecipeById } from "../../redux/actions/actions";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function Details() {
   const dispatch = useDispatch();
@@ -19,19 +20,28 @@ function Details() {
         <div>
           <img src={recipe[0]?.image} alt={recipe[0]?.name} />
           <p>id: {recipe[0]?.id} </p>
-          <p>name:{recipe[0]?.name} </p>
-          <p>dietas: {recipe[0]?.diets.map((diet) => diet.name).join(", ")}</p>
+          <p>name: {recipe[0]?.name} </p>
+          <p>dietas: {recipe[0]?.diets.map((diet) => diet).join(", ")}</p>
           {/* <p>tipo de plato: {recipe[0]?.dishTypes.map((d) => d).join(", ")}</p> */}
           <p>health score: {recipe[0]?.healthScore}</p>
           <p>resumen: {recipe[0]?.summary}</p>
-          <p>pasos:</p>{" "}
-          {/* {recipe[0]?.steps.map((s) => {
-            return (
-              <ul key={crypto.randomUUID()}>
-                <li>{s.step}</li>
-              </ul>
-            );
-          })} */}
+          <p>pasos: </p>{" "}
+          {Array.isArray(recipe[0].steps) ? (
+            recipe[0]?.steps.map((s) => {
+              return (
+                <ul key={crypto.randomUUID()}>
+                  <li>{s.step}</li>
+                </ul>
+              );
+            })
+          ) : (
+            <ul key={crypto.randomUUID()}>
+              <li>{recipe[0].steps}</li>
+            </ul>
+          )}
+          <Link to={"/home"}>
+            <button>back Home</button>
+          </Link>
         </div>
       ) : (
         <img
@@ -55,7 +65,7 @@ const CardStyled = styled.div`
 
   cursor: pointer;
   &:hover {
-    transform: scale(1.6);
+    transform: scale(1.1);
   }
 `;
 
