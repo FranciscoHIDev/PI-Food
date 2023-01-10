@@ -27,7 +27,7 @@ const NavStyled = styled.nav`
   justify-content: center;
   margin-left: 350px;
   align-items: center;
-  border: 1px solid #d822cf;
+  border: 1px solid #ee9fea;
   width: 700px;
   border-radius: 15px;
   margin-top: 10px;

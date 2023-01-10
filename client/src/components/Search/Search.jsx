@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getRecipeByName, setSearch } from "../../redux/actions/actions";
 
 function Search() {
-  return (
-    <div>Search</div>
-  )
-}
+  const dispatch = useDispatch();
+  const [buscar, setBuscar] = useState("");
 
-export default Search
+  function handleSearch(e) {
+    e.preventDefault();
+    dispatch(getRecipeByName(buscar));
+    setBuscar(e.target.value);
+
+    console.log(e.target.value);
+  }
+
+  return (
+    <>
+      <input
+        type="search"
+        name="search"
+        placeholder="Buscar receta..."
+        onChange={(e) => handleSearch(e)}
+      />
+    </>
+  );
+}
+export default Search;

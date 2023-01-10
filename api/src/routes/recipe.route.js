@@ -42,7 +42,7 @@ const getAllRecipes = async (req, res) => {
     try {
         if (name) {
             const recipeName = recipes.filter(r => r.name.toLowerCase().includes(name.toLowerCase()))
-            recipeName.length ? recipes.status(200).json({ recipeName }) :
+            recipeName.length ? res.status(200).json({ recipeName }) :
                 res.status(404).send("Receta no encontrado")
         } else {
             const result = await apiDB()

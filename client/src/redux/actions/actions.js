@@ -4,6 +4,10 @@ export const GET_RECIPE_ID = 'GET_RECIPE_ID'
 export const GET_RECIPE_NAME = 'GET_RECIPE_NAME'
 export const GET_ALL_DIETS = 'GET_ALL_DIETS'
 export const POST_DOG = "POST_DOG"
+export const SEARCH = "SEARCH"
+export const FILTER_BY_DIETS = "FILTER_BY_DIETS"
+export const FILTER_BY_SCORE = "FILTER_BY_SCORE"
+export const FILTER_BY_NAME = "FILTER_BY_NAME"
 
 const API_URL = 'http://localhost:3001/recipes'
 const API_URL2 = 'http://localhost:3001/diets'
@@ -13,7 +17,7 @@ export const getAllRecipes = () => async (dispatch) => {
         const { data } = await axios.get(API_URL)
         dispatch({
             type: 'GET_ALL_RECIPES',
-            payload: data
+            payload: data.result
         })
     } catch (error) {
         return console.log(error)
@@ -68,4 +72,32 @@ export const postRecipe = (payload) => async (dispatch) => {
         console.log(error)
     }
 
+}
+
+export const setSearch = (payload) => {
+    return {
+        type: "SEARCH",
+        payload
+    }
+}
+
+export const filterByDiets = (payload) => {
+    return {
+        type: "FILTER_BY_DIETS",
+        payload
+    }
+}
+
+export const filterByScore = (payload) => {
+    return {
+        type: "FILTER_BY_SCORE",
+        payload
+    }
+}
+
+export const orderByName = (payload) => {
+    return {
+        type: "ORDER_BY_NAME",
+        payload
+    }
 }
