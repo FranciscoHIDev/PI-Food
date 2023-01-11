@@ -13,16 +13,16 @@ function FilterDiets() {
   function handleDiets(e) {
     e.preventDefault();
     dispatch(filterByDiets(e.target.value));
-  
   }
   return (
     <>
       <select onChange={(e) => handleDiets(e)}>
-        <option selected>----Dietas----</option>
+        <option disabled selected value="">
+          ----Dietas----
+        </option>
         {diets?.map((d) => {
           return (
             <option key={d.id} value={d.name}>
-              {" "}
               {d.name}
             </option>
           );

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-function Paginated({ recipesPage, recetas, paginated }) {
+function Paginated({ recipesPage, recipes, paginated }) {
   const pages = [];
-  const numberPages = Math.ceil(recetas / recipesPage);
+  const numberPages = Math.ceil(recipes / recipesPage);
 
   for (let i = 0; i < numberPages; i++) {
     pages.push(i + 1);

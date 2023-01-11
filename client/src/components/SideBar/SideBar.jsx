@@ -11,7 +11,9 @@ function SideBar() {
     <>
       <h2>Las mejores recetas</h2>
       <Search />
-      {/* <FilterDiets /> */}
+      <FilterDiets />
+      <FilterScore />
+      <FilterOrder />
     </>
   );
 }
