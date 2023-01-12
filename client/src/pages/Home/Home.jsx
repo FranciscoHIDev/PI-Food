@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Paginated from "../../components/Paginated/Paginated";
 import NavBar from "../../components/NavBar/NavBar";
 import SideBar from "../../components/SideBar/SideBar";
+import Search from "../../components/Search/Search";
 function Home() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
@@ -29,8 +30,8 @@ function Home() {
   // ----------> renderizado <---------- //
   return (
     <>
-      <NavBar />
       <div>
+        <NavBar />
         <SideBar />
       </div>
       <div>
@@ -51,7 +52,7 @@ function Home() {
                 name={e.name}
                 image={e.image}
                 healthScore={e.healthScore}
-                dishTypes={e.dishTypes}
+                // dishTypes={e.dishTypes}
                 diets={e.diets}
               />
             );

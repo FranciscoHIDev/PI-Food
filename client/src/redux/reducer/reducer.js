@@ -12,7 +12,6 @@ const initialState = {
     recipes: [],
     allRecipes: [],
     recipeId: {},
-    recipeName: [],
     diets: [],
     search: []
 }
@@ -33,7 +32,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_RECIPE_NAME:
             return {
                 ...state,
-                recipeName: action.payload
+                allRecipes: action.payload
             }
         case GET_ALL_DIETS:
             return {
@@ -46,9 +45,10 @@ const rootReducer = (state = initialState, action) => {
                 recipes: [...state.recipes, action.payload]
             }
         case SEARCH:
+            const search = state.recipes?.filter((r) => r.name.toLowerCase().includes(action.payload.toLowerCase()))
             return {
                 ...state,
-                search: action.payload
+                recipes: search
             }
         case FILTER_BY_SCORE:
             let filtrado = [];

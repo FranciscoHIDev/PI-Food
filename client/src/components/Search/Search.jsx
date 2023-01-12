@@ -1,27 +1,32 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getRecipeByName, setSearch } from "../../redux/actions/actions";
+import { useDispatch } from "react-redux";
+import { setSearch } from "../../redux/actions/actions";
 
 function Search() {
   const dispatch = useDispatch();
-  const [buscar, setBuscar] = useState("");
+  const [name, setName] = useState("");
 
-  function handleSearch(e) {
+  function handleInput(e) {
     e.preventDefault();
-    dispatch(getRecipeByName(buscar));
-    setBuscar(e.target.value);
-
+    setName(e.target.value);
     console.log(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(setSearch(name));
   }
 
   return (
     <>
       <input
-        type="search"
-        name="search"
-        placeholder="Buscar receta..."
-        onChange={(e) => handleSearch(e)}
+        type="text"
+        placeholder="Buscar recetas..."
+        onChange={(e) => handleInput(e)}
       />
+      <button type="submit" onClick={(e) => handleSubmit(e)}>
+        🔍
+      </button>
     </>
   );
 }
