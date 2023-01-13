@@ -4,7 +4,9 @@ import {
   FilterDiets,
   FilterScore,
   FilterOrder,
+  Reset
 } from "../../components/Filtros";
+
 
 function SideBar() {
   return (
@@ -14,6 +16,7 @@ function SideBar() {
       <FilterDiets />
       <FilterScore />
       <FilterOrder />
+      <Reset />
     </>
   );
 }

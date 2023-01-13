@@ -14,7 +14,12 @@ function Search() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(setSearch(name));
+    if (name) {
+      dispatch(setSearch(name));
+      setName("");
+    } else {
+      alert("Ingrese un nombre de una receta");
+    }
   }
 
   return (
