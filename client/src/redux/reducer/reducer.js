@@ -32,7 +32,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_RECIPE_NAME:
             return {
                 ...state,
-                allRecipes: action.payload
+                recipesId: action.payload
             }
         case GET_ALL_DIETS:
             return {
@@ -45,7 +45,8 @@ const rootReducer = (state = initialState, action) => {
                 recipes: [...state.recipes, action.payload]
             }
         case SEARCH:
-            const search = state.recipes?.filter((r) => r.name.toLowerCase().includes(action.payload.toLowerCase()))
+            let search = []
+            search = state.allRecipes?.filter((r) => r.name.toLowerCase().includes(action.payload.toLowerCase()))
             return {
                 ...state,
                 recipes: search
@@ -78,19 +79,26 @@ const rootReducer = (state = initialState, action) => {
                 recipes: filterDiet,
             }
         case FILTER_BY_NAME:
-            const orderName = action.payload === "asc" ? state.recipes.sort((a, b) => {
-                if (a.name > b.name) return 1
-                if (a.name < b.name) return -1
-                return 0
-            }) : state.recipes.sort((a, b) => {
-                if (a.name < b.name) return 1
-                if (a.name > b.name) return -1
-                return 0
-            })
+            let order = [];
+
+            if (action.payload === "asc") {
+                order = state.recipes.sort((a, b) => {
+                    if (a.name < b.name) return -1;
+                    if (a.name > b.name) return 1;
+                    return 0;
+                });
+            } else {
+                order = state.recipes.sort((a, b) => {
+                    if (a.name > b.name) return -1;
+                    if (a.name < b.name) return 1;
+                    return 0;
+                });
+            }
             return {
                 ...state,
-                recipes: orderName
-            }
+                recipes: [...order],
+            };
+
         default:
             return state;
     }

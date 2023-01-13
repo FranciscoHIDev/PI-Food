@@ -97,7 +97,7 @@ export const filterByScore = (payload) => {
 
 export const orderByName = (payload) => {
     return {
-        type: "ORDER_BY_NAME",
+        type: "FILTER_BY_NAME",
         payload
     }
 }
