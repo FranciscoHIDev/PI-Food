@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { getAllDiets, postRecipe } from "../../redux/actions/actions";
 import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/Footer";
 import image from "../../img/cooking.gif";
 
 function Create() {
@@ -128,6 +129,7 @@ function Create() {
         {<p>Nivel de comida: {input.healthScore}</p>}
         {<p>Pasos: {input.steps}</p>}
       </>
+      <Footer/>
     </>
   );
 }

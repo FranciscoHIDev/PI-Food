@@ -5,6 +5,7 @@ import { getRecipeById } from "../../redux/actions/actions";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
+import Footer from  "../../components/Footer/Footer"
 
 function Details() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function Details() {
           />
         )}
       </CardStyled>
+      <Footer/>
     </>
   );
 }
