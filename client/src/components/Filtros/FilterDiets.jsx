@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDiets, filterByDiets } from "../../redux/actions/actions";
+import styled from "styled-components";
 
 function FilterDiets() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function FilterDiets() {
     dispatch(filterByDiets(e.target.value));
   }
   return (
-    <>
+    <ContainerStyled>
       <select onChange={(e) => handleDiets(e)}>
         <option disabled selected value="">
           ----Dietas----
@@ -28,8 +29,12 @@ function FilterDiets() {
           );
         })}
       </select>
-    </>
+    </ContainerStyled>
   );
 }
+
+const ContainerStyled = styled.div`
+  padding: 5px;
+`;
 
 export default FilterDiets;

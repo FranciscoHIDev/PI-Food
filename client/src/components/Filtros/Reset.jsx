@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 function Reset() {
   function handleReset(e) {
@@ -6,11 +7,22 @@ function Reset() {
     window.location.reload();
   }
 
-  return (
-    <div>
-      <button onClick={(e) => handleReset(e)}>Reset</button>
-    </div>
-  );
+  return <ButtonStyled onClick={(e) => handleReset(e)}>Reset</ButtonStyled>;
 }
 
+const ButtonStyled = styled.button`
+  border-radius: 3px;
+  border-color: #d920dcda;
+  border: 1px solid;
+  background-color: #d920dcda;
+  color: white;
+  margin: 6px;
+  padding: 6px;
+  cursor: pointer;
+  :hover {
+    background-color: #e6576e;
+    color: white;
+    border-color: #e6576e;
+  }
+`;
 export default Reset;
