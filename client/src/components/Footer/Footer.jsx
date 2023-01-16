@@ -23,7 +23,7 @@ function Footer() {
 const FooterStyled = styled.div`
   background-color: #d920dcda;
   padding: 40px;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   border-radius: 2em 2em 0 0;
   text-align: left;
   color: #fff;

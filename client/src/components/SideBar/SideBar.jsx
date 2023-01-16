@@ -4,14 +4,13 @@ import {
   FilterDiets,
   FilterScore,
   FilterOrder,
-  Reset
+  Reset,
 } from "../../components/Filtros";
-
+import styled from "styled-components";
 
 function SideBar() {
   return (
     <>
-      <h2>Las mejores recetas</h2>
       <Search />
       <FilterDiets />
       <FilterScore />

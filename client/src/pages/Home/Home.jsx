@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Paginated from "../../components/Paginated/Paginated";
 import NavBar from "../../components/NavBar/NavBar";
 import SideBar from "../../components/SideBar/SideBar";
-import Footer from "../../components/Footer/Footer"
+import Footer from "../../components/Footer/Footer";
 function Home() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
@@ -41,7 +41,6 @@ function Home() {
           paginated={paginated}
         />
       </div>
-
       <ContainerStyled>
         {currentRecipes.length !== 0 ? (
           currentRecipes.map((e) => {
@@ -58,10 +57,10 @@ function Home() {
             );
           })
         ) : (
-          <>
+          <LoadingStyed>
+            <ImageStyled src={image} alt={"cargando..."} Image></ImageStyled>
             <h1>Cargando recetas...</h1>
-            <img src={image} alt={"cargando..."} />
-          </>
+          </LoadingStyed>
         )}
       </ContainerStyled>
       {/*  <div>
@@ -71,7 +70,7 @@ function Home() {
           paginated={paginated}
         />
       </div>*/}
-      <Footer/>>
+      <Footer />
     </>
   );
 }
@@ -87,6 +86,22 @@ const ContainerStyled = styled.div`
   margin-top: 5px;
   padding-top: 20px;
   padding-bottom: 20px;
+`;
+
+const LoadingStyed = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  text-align: center;
+  color: #d920dcda;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ImageStyled = styled.img`
+  width: 240px;
 `;
 
 export default Home;

@@ -6,7 +6,7 @@ function Card({ id, image, name, healthScore, diets, dishTypes }) {
   return (
     <CardStyled>
       <TitleStyled>
-        <h6>{name}</h6>
+        <h5>{name}</h5>
       </TitleStyled>
 
       <ImagenStyled src={image} alt={name}></ImagenStyled>
@@ -31,23 +31,25 @@ const CardStyled = styled.div`
   margin-left: 1rem;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 10px;
-  padding: 8px;
 `;
 const TitleStyled = styled.div`
   border: 1px solid;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
   text-align: center;
   border-color: #db94d7;
-  color: #d920dcda;
+  color: #3c023dda;
   background: #db94d7;
-  margin-bottom: 3px;
 `;
 const DetailStyled = styled.div`
   border: 2px solid;
   border-color: #db94d7;
-  margin-top: 3px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  height: 160px;
   text-align: center;
-  color: #d920dcda;
+  color: #3c023dda;
 `;
 const ButtonStyled = styled.button`
   margin-bottom: 15px;
@@ -58,13 +60,13 @@ const ButtonStyled = styled.button`
   border-color: #d920dcda;
   cursor: pointer;
   :hover {
-    background-color: blue;
+    background-color: #e6576e;
     color: white;
-    border-color: blue;
+    border-color: #e6576e;
   }
 `;
 
 const ImagenStyled = styled.img`
-  border-radius: 10px;
+  /* border-radius: 0px 10px 0px 10px; */
 `;
 export default Card;
