@@ -12,7 +12,6 @@ function NavBar() {
         <ListStyled to={"/create"}>Create</ListStyled>
         <Search />
       </NavStyled>
-     
     </ContainerNavStyled>
   );
 }
@@ -41,7 +40,7 @@ const ListStyled = styled(NavLink)`
   color: #d920dcda;
   text-decoration: none;
   :hover {
-    background: #d920dcda;
+    background: #e6576e;
     border-radius: 5px;
     color: white;
   }
