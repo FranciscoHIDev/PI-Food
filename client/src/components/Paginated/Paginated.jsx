@@ -33,7 +33,7 @@ const NavStyled = styled.nav`
   margin-top: 10px;
 `;
 const ButtonStyled = styled.button`
-  background-color: #1d1c1d;
+  background-color: #d920dcda;
   border: 1px solid transparent;
   border-radius: 20px;
   margin: 5px;
@@ -44,13 +44,12 @@ const ButtonStyled = styled.button`
   max-height: 50px;
   min-width: 35px;
   max-width: 50px;
-
   :hover {
     background: #e6576e;
   }
 
-  :focus {
-    background-color: red;
+  :active {
+    background-color: black;
   }
 `;
 export default Paginated;

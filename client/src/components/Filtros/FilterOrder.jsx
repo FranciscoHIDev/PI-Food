@@ -28,7 +28,7 @@ function FilterOrder() {
 }
 
 const ConteinerStyled = styled.div`
-
-padding:5px`;
+  padding: 5px;
+`;
 
 export default FilterOrder;

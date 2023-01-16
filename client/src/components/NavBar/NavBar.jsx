@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Search from "./../Search/Search";
 
 function NavBar() {
   return (
@@ -9,7 +10,9 @@ function NavBar() {
         <ListStyled to={"/home"}>Home</ListStyled>
         <ListStyled to={"/about"}>About</ListStyled>
         <ListStyled to={"/create"}>Create</ListStyled>
+        <Search />
       </NavStyled>
+     
     </ContainerNavStyled>
   );
 }
@@ -42,7 +45,6 @@ const ListStyled = styled(NavLink)`
     border-radius: 5px;
     color: white;
   }
-  
 `;
 
 export default NavBar;

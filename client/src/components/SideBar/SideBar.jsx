@@ -11,7 +11,7 @@ import styled from "styled-components";
 function SideBar() {
   return (
     <ContainerStyled>
-      <Search />
+      <h3>Filtros:</h3>
       <FilterDiets />
       <FilterScore />
       <FilterOrder />
@@ -21,8 +21,12 @@ function SideBar() {
 }
 
 const ContainerStyled = styled.div`
-  margin: 10px;
-  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+  padding: 10px 60px ;
   border: 2px dotted;
   border-radius: 5px;
   color: #d920dcda;
