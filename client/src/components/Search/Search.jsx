@@ -15,12 +15,8 @@ function Search() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (name) {
-      dispatch(setSearch(name));
-      setName("");
-    } else {
-      alert("Ingrese un nombre de una receta");
-    }
+    dispatch(setSearch(name));
+    setName("");
   }
 
   return (

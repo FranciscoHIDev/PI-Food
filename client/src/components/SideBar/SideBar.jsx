@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "./../Search/Search";
 import {
   FilterDiets,
   FilterScore,
@@ -11,7 +10,7 @@ import styled from "styled-components";
 function SideBar() {
   return (
     <ContainerStyled>
-      <h3>Filtros:</h3>
+      <h3>Filtrar por:</h3>
       <FilterDiets />
       <FilterScore />
       <FilterOrder />
@@ -26,7 +25,7 @@ const ContainerStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 15px;
-  padding: 10px 60px ;
+  padding: 10px 60px;
   border: 2px dotted;
   border-radius: 5px;
   color: #d920dcda;

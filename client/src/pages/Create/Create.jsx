@@ -37,8 +37,8 @@ function Create() {
   }
 
   function handleOnBlur(e) {
-    let objError = validate(input);
-    setErrors(objError);
+    let objErrors = validate(input);
+    setErrors(objErrors);
   }
 
   function handleSelect(e) {
@@ -89,7 +89,7 @@ function Create() {
               onChange={(e) => handleOnChange(e)}
               onBlur={(e) => handleOnBlur(e)}
             ></InputStyled>
-            <div>{errors.name && <p className="danger">{errors.name}</p>}</div>
+            <ErrorStyled>{errors.name && <p>{errors.name}</p>}</ErrorStyled>
             <InputSummary
               type="text"
               placeholder="summary"
@@ -98,9 +98,9 @@ function Create() {
               onChange={(e) => handleOnChange(e)}
               onBlur={(e) => handleOnBlur(e)}
             ></InputSummary>
-            <div>
-              {errors.summary && <p className="danger">{errors.summary}</p>}
-            </div>
+            <ErrorStyled>
+              {errors.summary && <p>{errors.summary}</p>}
+            </ErrorStyled>
             <InputStyled
               type="number"
               placeholder="health score"
@@ -109,11 +109,9 @@ function Create() {
               onChange={(e) => handleOnChange(e)}
               onBlur={(e) => handleOnBlur(e)}
             ></InputStyled>
-            <div>
-              {errors.healthScore && (
-                <p className="danger">{errors.healthScore}</p>
-              )}
-            </div>
+            <ErrorStyled>
+              {errors.healthScore && <p>{errors.healthScore}</p>}
+            </ErrorStyled>
             <InputSteps
               type="text"
               placeholder="steps"
@@ -122,9 +120,8 @@ function Create() {
               onChange={(e) => handleOnChange(e)}
               onBlur={(e) => handleOnBlur(e)}
             ></InputSteps>
-            <div>
-              {errors.steps && <p className="danger">{errors.steps}</p>}
-            </div>
+            <ErrorStyled>{errors.steps && <p>{errors.steps}</p>}</ErrorStyled>
+
             <select
               name="diets"
               placeholder="diets"
@@ -148,7 +145,19 @@ function Create() {
                 </React.Fragment>
               );
             })}
-            <ButtonStyled type="submit">CREAR RECETA</ButtonStyled>
+            <ButtonStyled
+              type="submit"
+              disabled={
+                !input.name ||
+                !input.summary ||
+                !input.healthScore ||
+                !input.steps ||
+                Object.keys(errors).length > 0
+              }
+            >
+              {" "}
+              CREAR RECETA
+            </ButtonStyled>
           </form>
         </CardStyled>
 
@@ -193,6 +202,9 @@ const InputSteps = styled.input`
   margin: 7px;
   width: 350px;
   height: 100px;
+`;
+const ErrorStyled = styled.div`
+  color: red;
 `;
 const ButtonStyled = styled.button`
   background-color: #d920dcda;
