@@ -101,7 +101,7 @@ const LoadingStyed = styled.div`
 `;
 
 const ImageStyled = styled.img`
-  width: 240px;
+  width: 200px;
 `;
 
 export default Home;

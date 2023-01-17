@@ -11,13 +11,13 @@ function Reset() {
 }
 
 const ButtonStyled = styled.button`
-  border-radius: 3px;
+  border-radius: 5px;
   border-color: #d920dcda;
   border: 1px solid;
   background-color: #d920dcda;
   color: white;
   margin: 6px;
-  padding: 6px;
+  padding: 10px;
   cursor: pointer;
   :hover {
     background-color: #e6576e;

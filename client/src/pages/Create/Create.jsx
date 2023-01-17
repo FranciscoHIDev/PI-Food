@@ -6,6 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import image from "../../img/cooking.gif";
 import styled from "styled-components";
+import validate from "./validate.js";
 
 function Create() {
   const initialState = {
@@ -20,6 +21,7 @@ function Create() {
   // const [errors, setErrors] = useState({});
   const [diets, setDiets] = useState([]);
   const [input, setInput] = useState(initialState);
+  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const dietas = useSelector((state) => state.diets);
 
@@ -32,6 +34,11 @@ function Create() {
       ...input,
       [e.target.name]: e.target.value,
     });
+  }
+
+  function handleOnBlur(e) {
+    let objError = validate(input);
+    setErrors(objError);
   }
 
   function handleSelect(e) {
@@ -80,28 +87,44 @@ function Create() {
               name="name"
               value={input.name}
               onChange={(e) => handleOnChange(e)}
+              onBlur={(e) => handleOnBlur(e)}
             ></InputStyled>
-            <InputStyled
+            <div>{errors.name && <p className="danger">{errors.name}</p>}</div>
+            <InputSummary
               type="text"
               placeholder="summary"
               name="summary"
               value={input.summary}
               onChange={(e) => handleOnChange(e)}
-            ></InputStyled>
+              onBlur={(e) => handleOnBlur(e)}
+            ></InputSummary>
+            <div>
+              {errors.summary && <p className="danger">{errors.summary}</p>}
+            </div>
             <InputStyled
               type="number"
               placeholder="health score"
               name="healthScore"
               value={input.healthScore}
               onChange={(e) => handleOnChange(e)}
+              onBlur={(e) => handleOnBlur(e)}
             ></InputStyled>
-            <InputStyled
+            <div>
+              {errors.healthScore && (
+                <p className="danger">{errors.healthScore}</p>
+              )}
+            </div>
+            <InputSteps
               type="text"
               placeholder="steps"
               name="steps"
               value={input.steps}
               onChange={(e) => handleOnChange(e)}
-            ></InputStyled>
+              onBlur={(e) => handleOnBlur(e)}
+            ></InputSteps>
+            <div>
+              {errors.steps && <p className="danger">{errors.steps}</p>}
+            </div>
             <select
               name="diets"
               placeholder="diets"
@@ -158,6 +181,18 @@ const InputStyled = styled.input`
   padding: 5px;
   margin: 7px;
   width: 350px;
+`;
+const InputSummary = styled.input`
+  padding: 5px;
+  margin: 7px;
+  width: 350px;
+  height: 100px;
+`;
+const InputSteps = styled.input`
+  padding: 5px;
+  margin: 7px;
+  width: 350px;
+  height: 100px;
 `;
 const ButtonStyled = styled.button`
   background-color: #d920dcda;

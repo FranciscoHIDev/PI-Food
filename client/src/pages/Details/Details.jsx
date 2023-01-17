@@ -5,7 +5,8 @@ import { getRecipeById } from "../../redux/actions/actions";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
-import Footer from  "../../components/Footer/Footer"
+import Footer from "../../components/Footer/Footer";
+import image from "../../img/loading.gif";
 
 function Details() {
   const dispatch = useDispatch();
@@ -22,66 +23,125 @@ function Details() {
       <CardStyled>
         {recipe ? (
           <div>
-            <img src={recipe[0]?.image} alt={recipe[0]?.name} />
-            <p>id: {recipe[0]?.id} </p>
-            <p>Name: {recipe[0]?.name} </p>
-            <p>Dietas: {recipe[0]?.diets.map((diet) => diet).join(", ")}</p>
-            <p>
-              Tipo de plato:
-              {Array.isArray(recipe[0].dishTypes) ? (
-                recipe[0]?.dishTypes.map((d) => {
-                  return <p>{d}</p>;
+            <Link to={"/home"}>
+              <ButtonStyled>regresar a Home</ButtonStyled>
+            </Link>
+            <CardsStyled>
+              <h2>{recipe[0]?.name} </h2>
+            </CardsStyled>
+            <CardsStyled>
+              <h3>Resumen:</h3>
+              {recipe[0]?.summary?.replace(/<[^>]*>/g, "")}
+            </CardsStyled>
+            <ContainerStyled>
+              <ImagenStyled
+                src={recipe[0]?.image}
+                alt={recipe[0]?.name}
+              ></ImagenStyled>
+              <CardInfo>
+                <h3>Puntaje de salud:</h3>
+                {recipe[0]?.healthScore}
+                <h3>Tipos de dietas:</h3>{" "}
+                {recipe[0]?.diets.map((diet) => diet).join(", ")}
+                <h3>Tipo de plato:</h3>
+                {Array.isArray(recipe[0].dishTypes) ? (
+                  recipe[0]?.dishTypes.map((d) => {
+                    return <p>{d}</p>;
+                  })
+                ) : (
+                  <p>---------------------------------------------------</p>
+                )}
+              </CardInfo>
+            </ContainerStyled>
+            <CardssStyled>
+              <h3>Pasos de preparación:</h3>
+              {Array.isArray(recipe[0].steps) ? (
+                recipe[0]?.steps.map((s) => {
+                  return (
+                    <ul key={crypto.randomUUID()}>
+                      <li>{s.step}</li>
+                    </ul>
+                  );
                 })
               ) : (
-                <p>---------------------------------------------------</p>
+                <ul key={crypto.randomUUID()}>
+                  <li>{recipe[0].steps}</li>
+                </ul>
               )}
-            </p>
-            <p>Health score: {recipe[0]?.healthScore}</p>
-            <p>Resumen: {recipe[0]?.summary}</p>
-            <p>Pasos: </p>{" "}
-            {Array.isArray(recipe[0].steps) ? (
-              recipe[0]?.steps.map((s) => {
-                return (
-                  <ul key={crypto.randomUUID()}>
-                    <li>{s.step}</li>
-                  </ul>
-                );
-              })
-            ) : (
-              <ul key={crypto.randomUUID()}>
-                <li>{recipe[0].steps}</li>
-              </ul>
-            )}
-            <Link to={"/home"}>
-              <button>back Home</button>
-            </Link>
+            </CardssStyled>
           </div>
         ) : (
-          <img
-            src="https://acegif.com/wp-content/uploads/loading-4.gif"
-            alt="loading"
-          />
+          <ImageStyled src={image} alt="loading"></ImageStyled>
         )}
       </CardStyled>
-      <Footer/>
+      <Footer />
     </>
   );
 }
-
+const ButtonStyled = styled.button`
+  background-color: #d920dcda;
+  border: 1px solid #d920dcda;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  :hover {
+    background-color: #e6576e;
+    border-color: #e6576e;
+  }
+`;
 const CardStyled = styled.div`
   display: flex;
   flex-direction: column;
-  width: 900px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 1300px;
   margin: 40px auto;
-
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 5px;
   padding: 8px;
-
   cursor: pointer;
-  &:hover {
-    transform: scale(1.1);
-  }
+`;
+
+const CardsStyled = styled.div`
+  border: 1px solid #d17b89;
+  padding: 10px;
+  background: #d17b89;
+  border-radius: 20px;
+  margin: 20px;
+  text-align: center;
+`;
+const CardssStyled = styled.div`
+  border: 1px solid #d17b89;
+  padding: 10px;
+  background: #d17b89;
+  border-radius: 20px;
+  margin: 20px;
+`;
+const ContainerStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+`;
+const CardInfo = styled.div`
+  border: 1px solid #d17b89;
+  padding: 10px;
+  background: #d17b89;
+  border-radius: 20px;
+  width: 400px;
+  text-align: center;
+`;
+
+const ImageStyled = styled.img`
+  width: 360px;
+`;
+const ImagenStyled = styled.img`
+  width: 390px;
+  margin: 19px;
+  border-radius: 15px;
+  border: 3px solid #d17b89;
 `;
 
 export default Details;
