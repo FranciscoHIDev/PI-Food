@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { LandingPage, Home, Details, About, Create, NotFound } from '../pages/index'
+import { LandingPage, Home, Details, About, Create } from '../pages/index'
 
 function RouteApp() {
     return (
@@ -10,7 +10,6 @@ function RouteApp() {
             <Route path="/details/:id" component={Details} />
             <Route path="/about" component={About} />
             <Route path="/create" component={Create} />
-            {/* <Route exact path={"*"} component={NotFound} /> */}
         </>
     )
 }

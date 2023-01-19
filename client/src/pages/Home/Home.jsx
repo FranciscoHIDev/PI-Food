@@ -12,22 +12,19 @@ function Home() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
 
-  // ----------> paginado <---------- //
   const [page, setPage] = useState(1);
-  const [recipesPage, setRecipesPage] = useState(9);
-  const lastRecipe = page * recipesPage;
-  const firstRecipe = lastRecipe - recipesPage;
-  const currentRecipes = recipes?.slice(firstRecipe, lastRecipe);
+  const recipesPerPage = 9;
+  const lastRecipe = page * recipesPerPage;
+  const firstRecipe = lastRecipe - recipesPerPage;
+  const currentRecipes = recipes.slice(firstRecipe, lastRecipe);
   const paginated = (pageNumber) => {
     setPage(pageNumber);
   };
 
-  // ----------> ciclo de vida <---------- //
   useEffect(() => {
     dispatch(getAllRecipes());
   }, [dispatch]);
 
-  // ----------> renderizado <---------- //
   return (
     <>
       <div>
@@ -36,7 +33,7 @@ function Home() {
       </div>
       <div>
         <Paginated
-          recipesPage={recipesPage}
+          recipesPerPage={recipesPerPage}
           recipes={recipes?.length}
           paginated={paginated}
         />
@@ -63,13 +60,7 @@ function Home() {
           </LoadingStyed>
         )}
       </ContainerStyled>
-      {/*  <div>
-        <Paginated
-          recipesPage={recipesPage}
-          recipes={recipes?.length}
-          paginated={paginated}
-        />
-      </div>*/}
+
       <Footer />
     </>
   );

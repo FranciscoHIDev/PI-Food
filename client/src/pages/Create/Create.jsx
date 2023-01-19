@@ -18,12 +18,12 @@ function Create() {
     diets: [],
   };
 
-  // const [errors, setErrors] = useState({});
+  
   const [diets, setDiets] = useState([]);
   const [input, setInput] = useState(initialState);
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
-  const dietas = useSelector((state) => state.diets);
+  const allDiets = useSelector((state) => state.diets);
 
   React.useEffect(() => {
     dispatch(getAllDiets());
@@ -77,7 +77,7 @@ function Create() {
       <ContenedorStyled>
         <CardStyled>
           <h3>
-            Crea tu receta favorita solo ingresa datos en el siguiente
+            Crea tu receta favorita solo ingresa los datos en el siguiente
             formulario.
           </h3>
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -128,7 +128,7 @@ function Create() {
               onChange={(e) => handleSelect(e)}
             >
               <option value="--Seleccionar--">--Tipo de dieta--</option>
-              {dietas?.map((diet, id) => (
+              {allDiets?.map((diet, id) => (
                 <option key={id} value={null}>
                   {diet.name}
                 </option>

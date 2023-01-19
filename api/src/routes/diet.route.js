@@ -1,4 +1,4 @@
-const { Router } = require('express')
+// const { Router } = require('express')
 const { Diet } = require('../db')
 const { getApiDiets } = require('../controllers/diet.controller')
 

@@ -1,9 +1,9 @@
 import {
     GET_ALL_RECIPES,
     GET_RECIPE_ID,
-    GET_RECIPE_NAME,
+    GET_RECIPES_NAME,
     GET_ALL_DIETS,
-    POST_DOG,
+    POST_RECIPE,
     SEARCH,
     FILTER_BY_DIETS, FILTER_BY_SCORE, FILTER_BY_NAME
 } from '../actions/actions.js'
@@ -13,7 +13,7 @@ const initialState = {
     allRecipes: [],
     recipeId: {},
     diets: [],
-    search: []
+
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -23,23 +23,24 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 recipes: action.payload,
                 allRecipes: action.payload
+
             }
         case GET_RECIPE_ID:
             return {
                 ...state,
                 recipeId: action.payload
             }
-        case GET_RECIPE_NAME:
+        case GET_RECIPES_NAME:
             return {
                 ...state,
-                recipesId: action.payload
+                recipes: action.payload
             }
         case GET_ALL_DIETS:
             return {
                 ...state,
                 diets: action.payload
             }
-        case POST_DOG:
+        case POST_RECIPE:
             return {
                 ...state,
                 recipes: [...state.recipes, action.payload]
@@ -49,8 +50,11 @@ const rootReducer = (state = initialState, action) => {
             search = state.allRecipes?.filter((r) => r.name.toLowerCase().includes(action.payload.toLowerCase()))
             return {
                 ...state,
-                recipes: search
+                recipes: [...search]
+
+
             }
+
         case FILTER_BY_SCORE:
             let filtrado = [];
 

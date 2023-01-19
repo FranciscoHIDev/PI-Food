@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-function Paginated({ recipesPage, recipes, paginated }) {
-  const pages = [];
-  const numberPages = Math.ceil(recipes / recipesPage);
+function Paginated({ recipesPerPage, recipes, paginated }) {
+  const pagesNumbers = [];
+  const numberPages = Math.ceil(recipes / recipesPerPage);
 
   for (let i = 0; i < numberPages; i++) {
-    pages.push(i + 1);
+    pagesNumbers.push(i + 1);
   }
 
   return (
     <NavStyled>
-      {pages?.map((num) => (
+      {pagesNumbers?.map((num) => (
         <ButtonStyled key={crypto.randomUUID()} onClick={() => paginated(num)}>
           {num}
         </ButtonStyled>

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { getAllDiets } = require('./diet.route')
-const { getAllRecipes, getRecipesById, postRecipes, bulkCreateRecipes } = require('./recipe.route')
+const { getAllRecipes, getRecipesById, postRecipes,  } = require('./recipe.route')
 
 // Importar todos los routers;
 

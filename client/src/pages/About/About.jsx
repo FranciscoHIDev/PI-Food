@@ -15,7 +15,8 @@ function About() {
           <p>
             Esta página es un Proyecto para el bootcamp de Henry. Es una
             aplicación donde podras encontrar información sobre distintas
-            recetas de comida, utilice una API externa de spoonacular....
+            recetas de comida. Para el proyecto utilicé una API externa de
+            spoonacular....
           </p>
         </CardInfo>
       </CardStyled>

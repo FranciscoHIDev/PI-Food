@@ -5,18 +5,17 @@ import styled from "styled-components";
 
 function Search() {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
+  const [input, setInput] = useState("");
 
   function handleInput(e) {
     e.preventDefault();
-    setName(e.target.value);
-    console.log(e.target.value);
+    setInput(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(setSearch(name));
-    setName("");
+    dispatch(setSearch(input));
+    setInput("");
   }
 
   return (

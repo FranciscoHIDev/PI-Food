@@ -46,7 +46,7 @@ function Details() {
                 <h3>Tipo de plato:</h3>
                 {Array.isArray(recipe[0].dishTypes) ? (
                   recipe[0]?.dishTypes.map((d) => {
-                    return <p>{d}</p>;
+                    return <p key={crypto.randomUUID()}>{d}</p>;
                   })
                 ) : (
                   <p>---------------------------------------------------</p>
@@ -59,13 +59,13 @@ function Details() {
                 recipe[0]?.steps.map((s) => {
                   return (
                     <ul key={crypto.randomUUID()}>
-                      <li>{s.step}</li>
+                      <li key={crypto.randomUUID()}>{s.step}</li>
                     </ul>
                   );
                 })
               ) : (
                 <ul key={crypto.randomUUID()}>
-                  <li>{recipe[0].steps}</li>
+                  <li key={crypto.randomUUID()}>{recipe[0].steps}</li>
                 </ul>
               )}
             </CardssStyled>

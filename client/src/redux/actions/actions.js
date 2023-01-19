@@ -1,9 +1,9 @@
 import axios from 'axios'
 export const GET_ALL_RECIPES = 'GET_ALL_RECIPES'
 export const GET_RECIPE_ID = 'GET_RECIPE_ID'
-export const GET_RECIPE_NAME = 'GET_RECIPE_NAME'
+export const GET_RECIPES_NAME = 'GET_RECIPES_NAME'
 export const GET_ALL_DIETS = 'GET_ALL_DIETS'
-export const POST_DOG = "POST_DOG"
+export const POST_RECIPE = "POST_RECIPE"
 export const SEARCH = "SEARCH"
 export const FILTER_BY_DIETS = "FILTER_BY_DIETS"
 export const FILTER_BY_SCORE = "FILTER_BY_SCORE"
@@ -37,11 +37,11 @@ export const getRecipeById = (id) => async (dispatch) => {
     }
 }
 
-export const getRecipeByName = (name) => async (dispatch) => {
+export const getRecipesName = (name) => async (dispatch) => {
     try {
         const { data } = await axios.get(`http://localhost:3001/recipes?name=${name}`)
         dispatch({
-            type: 'GET_RECIPE_NAME',
+            type: 'GET_RECIPES_NAME',
             payload: data
         })
     } catch (error) {
@@ -65,7 +65,7 @@ export const postRecipe = (payload) => async (dispatch) => {
     try {
         const created = await axios.post("http://localhost:3001/recipes", payload)
         return dispatch({
-            type: "POST_DOG",
+            type: "POST_RECIPE",
             payload: created
         })
     } catch (error) {

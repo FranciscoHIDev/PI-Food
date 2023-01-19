@@ -1,5 +1,4 @@
 // const { Router } = require('express')
-const dataAPI = require('../data/dataInfo.json')
 const { Recipe, Diet } = require('../db')
 const { getApiInfo } = require('../controllers/recipe.controller')
 
