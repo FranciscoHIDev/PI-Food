@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getRecipeById } from "../../redux/actions/actions";
+import { getRecipeById,clearDetail } from "../../redux/actions/actions";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
@@ -15,6 +15,7 @@ function Details() {
 
   React.useEffect(() => {
     dispatch(getRecipeById(id));
+    return() => dispatch(clearDetail())
   }, [dispatch, id]);
 
   return (

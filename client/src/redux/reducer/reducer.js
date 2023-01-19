@@ -4,6 +4,7 @@ import {
     GET_RECIPES_NAME,
     GET_ALL_DIETS,
     POST_RECIPE,
+    CLEAR_DETAIL,
     SEARCH,
     FILTER_BY_DIETS, FILTER_BY_SCORE, FILTER_BY_NAME
 } from '../actions/actions.js'
@@ -102,7 +103,11 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 recipes: [...order],
             };
-
+            case CLEAR_DETAIL:
+                return{
+                    ...state,
+                    recipeId:initialState.recipeId
+                };
         default:
             return state;
     }

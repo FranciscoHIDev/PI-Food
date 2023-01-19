@@ -8,6 +8,7 @@ export const SEARCH = "SEARCH"
 export const FILTER_BY_DIETS = "FILTER_BY_DIETS"
 export const FILTER_BY_SCORE = "FILTER_BY_SCORE"
 export const FILTER_BY_NAME = "FILTER_BY_NAME"
+export const CLEAR_DETAIL = "CLEAR_DETAIL"
 
 const API_URL = 'http://localhost:3001/recipes'
 const API_URL2 = 'http://localhost:3001/diets'
@@ -99,5 +100,11 @@ export const orderByName = (payload) => {
     return {
         type: "FILTER_BY_NAME",
         payload
+    }
+}
+
+export const clearDetail = () => {
+    return {
+        type: "CLEAR_DETAIL"
     }
 }
