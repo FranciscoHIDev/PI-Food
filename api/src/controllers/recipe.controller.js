@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { API,API2 } = process.env
+
 
 const getApiInfo = async () => {
     try {

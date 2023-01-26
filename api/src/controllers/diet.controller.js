@@ -1,5 +1,4 @@
 const axios = require('axios')
-// const { API,API2 } = process.env
 const { Diet } = require('../db')
 
 
